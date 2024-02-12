@@ -1,27 +1,26 @@
 package StepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import static POM.ElementsMap.elementsMap;
-import static enums.ExpectedConditionType.VISIBLE;
+import static enums.ExpectedConditionType.*;
 
 public class SmartphonesStepDefinitions extends BaseMethods {
-    List<WebElement> products;
 
-    @Then("Product {string} name should be displayed in new page")
-    public void productSubcategoryPageCheck(String text) {
-        Assert.assertEquals(driver.findElement(elementsMap.get("productSubCategoryName")).getText(), text);
+    @Then("Tag value should contains {string}")
+    public void tagValueShouldContains(String text) {
+        Assert.assertTrue(driver.findElement(elementsMap.get("customTag")).getText().contains(text));
     }
 
-    @Then("Products associated to selected {string} should be displayed")
-    public void productsRelatedToShouldBeDisplayed(String text) {
-        products = driver.findElements(elementsMap.get("productName"));
-        for (WebElement element : products){
-            Assert.assertTrue(element.getText().toUpperCase().contains(text.toUpperCase()));
-        }
-    }
 }

@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CucumberOptions(
-        features = {"classpath:features"},
+        features = {"classpath:features/Computers.feature"},
         plugin = {"pretty", "json:target/cucumber.json"},
-        tags = "@Case"
+        tags = "@RAMFilter"
 )
 
 

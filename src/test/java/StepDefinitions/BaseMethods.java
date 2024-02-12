@@ -24,18 +24,25 @@ public abstract class BaseMethods {
         }catch (Exception ignored){
 
         }
+
+        try{
+            Class<?> generalClass = Class.forName("POM.GeneralPOM");
+            Object generalObject = generalClass.getDeclaredConstructor().newInstance();
+        }catch (Exception ignored){
+
+        }
     }
     public WebDriver driver = CucumberHook.driver.get();
     WebDriverWait wait;
 
-    public void moveToElement(WebElement element){
+    protected void moveToElement(WebElement element){
         Actions actions = new Actions(driver);
-        actions.moveToElement(element);
+        actions.moveToElement(element).build().perform();
     }
 
-    public void clickAction(WebElement element){
+    protected void clickAction(WebElement element){
         Actions actions = new Actions(driver);
-        actions.click(element);
+        actions.moveToElement(element).click(element).build().perform();
     }
 
     protected void explicitWait(By locator , ExpectedConditionType expectedCondition , int time) {
@@ -62,6 +69,26 @@ public abstract class BaseMethods {
         }
     }
 
+    protected void explicitWait(WebElement element , ExpectedConditionType expectedCondition , int time) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        switch (expectedCondition) {
+            case VISIBLE: {
+                wait.until(ExpectedConditions.visibilityOf(element));
+                break;
+            }
+            case INVISIBLE: {
+                wait.until(ExpectedConditions.invisibilityOf(element));
+                break;
+            }
+            case CLICKABLE: {
+                wait.until(ExpectedConditions.elementToBeClickable(element));
+                break;
+            }
+            default:
+                throw new IllegalArgumentException("Wrong expected condition");
+        }
+    }
+
     protected void explicitWaitList(List<WebElement> list , ExpectedConditionType expectedCondition , int time) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(time));
         switch (expectedCondition) {
@@ -78,7 +105,22 @@ public abstract class BaseMethods {
         }
     }
 
+    protected void explicitWaitAttributeText(By locator , String attribute, String value, int time) {
+        wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+        wait.until(ExpectedConditions.attributeToBe(locator, attribute, value));
+    }
+
     protected JavascriptExecutor getJsExecutor(){
         return (JavascriptExecutor)driver;
     }
+    protected void dragAndDrop(WebElement start, WebElement end){
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(start, end).build().perform();
+    }
+
+    protected void actionSendKeys(String value){
+        Actions actions = new Actions(driver);
+        actions.sendKeys(value).build().perform();
+    }
+
 }
