@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.tablesorter.min.js"></script>
+<script src="js/Chart.min.js"></script>
+<script src="js/moment.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+<link rel="stylesheet" href="css/cucumber.css" type="text/css"/>
+<link rel="stylesheet" href="css/font-awesome.min.css"/>
+<link rel="shortcut icon" href="images/favicon.png"/>
+
+<script>
+$(document).ready(function() {
+    // this will tell tablesorter to try looking for the data-value attribute
+    // if present, it'll sort by that instead
+    // otherwise, it'll sort by the text content of the table cell
+    $("#tablesorter").tablesorter({
+        textAttribute: 'data-value',
+        // ignores the first row of the header, the 'scenario', 'steps', since
+        // sorting those doesn't make sense
+        selectorHeaders: '> thead tr:not(.dont-sort) th',
+        // use a stable sort
+        sortStable: true
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<title>Cucumber Reports  - Steps Overview</title>
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top" id="navigation">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse">
+      <p class="navbar-text navbar-left">Cucumber Report</p>
+      <ul class="nav navbar-nav navbar-right">
+        <li role="presentation" ><a href="overview-features.html">Features</a></li>
+        <li role="presentation" ><a href="overview-tags.html">Tags</a></li>
+        <li role="presentation"     class="active" ><a href="overview-steps.html">Steps</a></li>
+        <li role="presentation" ><a href="overview-failures.html">Failures</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container-fluid">
+  <div class="col-md-5 col-md-offset-1">
+
+<table class="table table-bordered" id="build-info">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="info">
+      <td>KontaktSite</td>
+      <td>12 Feb 2024, 11:42</td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+  <div class="col-md-3 col-md-offset-2">
+  </div>
+</div>
+
+
+<div id="report-lead" class="container-fluid">
+  <div class="col-md-10 col-md-offset-1">
+    <h2>Steps Statistics</h2>
+      <p>The following graph shows step statistics for this build. Below list is based on results.
+ step does not provide information about result then is not listed below.
+ Additionally @Before and @After are not counted because they are part of the scenarios, not steps.</p>
+  </div>
+</div>
+
+<div class="container-fluid" id="report">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <table id="tablesorter" class="stats-table table-hover">
+
+        <thead>
+          <tr class="header">
+            <th>Implementation</th>
+            <th>Occurrences</th>
+            <th>Average duration</th>
+            <th>Max duration</th>
+            <th>Total durations</th>
+            <th>Ratio</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+              <td class="location">DriverSession.CucumberHook.afterScenario(io.cucumber.java.Scenario)</td>
+              <td>4</td>
+              <td class="duration" data-value="231616900">0.231</td>
+              <td class="duration" data-value="231616900">0.298</td>
+              <td class="duration" data-value="926467600">0.926</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">DriverSession.CucumberHook.beforeScenario(io.cucumber.java.Scenario)</td>
+              <td>4</td>
+              <td class="duration" data-value="12495005100">12.495</td>
+              <td class="duration" data-value="12495005100">15.423</td>
+              <td class="duration" data-value="49980020400">49.980</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.clickDaxilOlBtn()</td>
+              <td>4</td>
+              <td class="duration" data-value="156229125">0.156</td>
+              <td class="duration" data-value="156229125">0.231</td>
+              <td class="duration" data-value="624916500">0.624</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.clickSubmitBtn()</td>
+              <td>4</td>
+              <td class="duration" data-value="6128653825">6.128</td>
+              <td class="duration" data-value="6128653825">6.141</td>
+              <td class="duration" data-value="24514615300">24.514</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.declineDiscountAlert()</td>
+              <td>4</td>
+              <td class="duration" data-value="2217368400">2.217</td>
+              <td class="duration" data-value="2217368400">2.476</td>
+              <td class="duration" data-value="8869473600">8.869</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.fillThePasswordBtn(java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="110749450">0.110</td>
+              <td class="duration" data-value="110749450">0.196</td>
+              <td class="duration" data-value="442997800">0.442</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.fillTheUsernameBtn(java.lang.String)</td>
+              <td>4</td>
+              <td class="duration" data-value="2264304100">2.264</td>
+              <td class="duration" data-value="2264304100">2.338</td>
+              <td class="duration" data-value="9057216400">9.057</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.userIsInMainPage()</td>
+              <td>4</td>
+              <td class="duration" data-value="5628370325">5.628</td>
+              <td class="duration" data-value="5628370325">5.777</td>
+              <td class="duration" data-value="22513481300">22.513</td>
+              <td class="passed">100.00%</td>
+            </tr>
+            <tr>
+              <td class="location">LoginStepDefinitions.userMustNotBeLogin()</td>
+              <td>4</td>
+              <td class="duration" data-value="72683975">0.072</td>
+              <td class="duration" data-value="72683975">0.114</td>
+              <td class="duration" data-value="290735900">0.290</td>
+              <td class="passed">100.00%</td>
+            </tr>
+        </tbody>
+
+        <tfoot class="total">
+          <tr>
+            <td>9</td>
+            <td>36</td>
+            <td class="duration">3.256</td>
+            <td class="duration">49.980</td>
+            <td class="duration">1:57.219</td>
+            <td>Totals</td>
+          </tr>
+        </tfoot>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<nav class="navbar navbar-default" id="footer">
+  <div class="container-fluid">
+    <p class="navbar-text navbar-right">
+        <small>generate Cucumber HTML reports via:&nbsp;</small>
+        <a class="navbar-link" href="https://github.com/jenkinsci/cucumber-reports-plugin">Jenkins Plugin</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-reporting">Standalone</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/cucumber-sandwich">Sandwich</a> |
+        <a class="navbar-link" href="https://github.com/damianszczepanik/maven-cucumber-reporting">Maven</a>
+        &nbsp;&nbsp;
+    </p>
+  </div>
+</nav>
+
+</body>
+</html>

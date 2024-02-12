@@ -12,10 +12,9 @@ import java.util.List;
 
 @CucumberOptions(
         features = {"classpath:features"},
-        plugin = {"pretty", "json:target/cucumber.json"}
+        plugin = {"pretty", "json:target/cucumber.json"},
+        tags = "@UnsuccesfulLogin"
 )
-
-
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
