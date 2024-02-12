@@ -18,6 +18,7 @@ public class CucumberHook {
         pomName = FilenameUtils.getBaseName(scenario.getUri().toString());
         driver.set(new ChromeDriver());
         driver.get().get("https://kontakt.az/");
+        driver.get().manage().window().maximize();
     }
 
     @After
