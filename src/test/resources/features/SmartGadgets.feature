@@ -112,7 +112,7 @@ Feature: SmartGadgets
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User selects "<productType>" from "productTypes"
     And User hovers to a product
-    And User clicks "addToBasketBtn" button
+    And User clicks "addToBasketBtn" buttons
     Then Selected products count should be displayed on "basketBtn"
     And User clicks "basketBtn" button
     Then Product should be displayed in "basketProducts"
@@ -130,7 +130,7 @@ Feature: SmartGadgets
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User selects "<productType>" from "productTypes"
     And User hovers to a product
-    And User clicks "addToBasketBtn" button
+    And User clicks "addToBasketBtn" buttons
     And User clicks "basketBtn" button
     And User clicks "removeSelectedProductsBtn" button
     Then "Səbətinizdə məhsul yoxdur" message should be displayed in "emptyBasketSection"
@@ -156,4 +156,20 @@ Feature: SmartGadgets
       | productCategory | productSubCategory | productType                  |
       | Smart qadjetlər | Smart saatlar      |                              |
       | Smart qadjetlər | Smart qolbaqlar    |                              |
+      | Smart qadjetlər | Qulaqlıqlar        | Bluetooth simsiz qulaqlıqlar |
+
+  @ProductCountIncrease
+  Scenario Outline: Increase count of products in basket ("<productType>")
+    Given User is in Home Page
+    When User selects "<productCategory>" from "productCategoryList"
+    And User selects "<productSubCategory>" from "productSubCategoryList"
+    And User selects "<productType>" from "productTypes"
+    And User hovers to a product
+    And User clicks "addToBasketBtn" buttons
+    And User clicks "basketBtn" button
+    And User clicks "productIncreaseBtn" buttons
+    Then Each "productCount" should be 2
+
+    Examples:
+      | productCategory | productSubCategory | productType                  |
       | Smart qadjetlər | Qulaqlıqlar        | Bluetooth simsiz qulaqlıqlar |

@@ -116,9 +116,9 @@ public abstract class BaseMethods {
         }
     }
 
-    protected void explicitWaitAttributeText(By locator , String attribute, String value, int time) {
+    protected void explicitWaitAttributeText(WebElement element , String attribute, String value, int time) {
         wait = new WebDriverWait(driver, Duration.ofSeconds(time));
-        wait.until(ExpectedConditions.attributeToBe(locator, attribute, value));
+        wait.until(ExpectedConditions.attributeToBe(element, attribute, value));
     }
 
     protected JavascriptExecutor getJsExecutor(){
@@ -132,9 +132,7 @@ public abstract class BaseMethods {
     protected void actionSendKeys(String value){
         Actions actions = new Actions(driver);
         actions.sendKeys(value).build().perform();
+        }
+
     }
 
-
-    }
-
-}

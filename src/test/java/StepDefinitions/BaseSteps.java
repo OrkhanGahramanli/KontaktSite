@@ -87,17 +87,32 @@ public class BaseSteps extends BaseMethods {
 
     @And("User clicks {string} buttons")
     public void userClicksButtons(String elements) throws InterruptedException {
+        if (elements.equals("addToBasketBtn")){
+            List<WebElement> addToBasketElements = driver.findElements(elementsMap.get(elements));
+            for (int i=0; i<selectedProductIndex; i++){
+                getJsExecutor().executeScript("arguments[0].click();", addToBasketElements.get(i));
+                productsAddedToBasketCount++;
+                Thread.sleep(1000);
+            }
+        }
+        else if (elements.equals("showMoreButton")){
         List<WebElement> showMoreBtns;
         showMoreBtns = driver.findElements(elementsMap.get(elements));
         for (WebElement element : showMoreBtns){
             try {
                 if (element.isDisplayed()) element.click();
-            }catch (ElementClickInterceptedException e)
-            {
+            }catch (ElementClickInterceptedException e) {
+                getJsExecutor().executeScript("arguments[0].click();", element);
+                }
+            }
+            Thread.sleep(1000);
+        }else {
+            List<WebElement> list = driver.findElements(elementsMap.get(elements));
+            for (WebElement element : list){
+                explicitWait(element, CLICKABLE, 10);
                 getJsExecutor().executeScript("arguments[0].click();", element);
             }
         }
-        if (elements.equals("showMoreButton")) Thread.sleep(1000);
     }
 
     @Then("Products associated to selected {string} should be displayed")
@@ -142,25 +157,19 @@ public class BaseSteps extends BaseMethods {
     }
 
     @And("User clicks {string} button")
-    public void userClicksButton(String element) throws Exception {
-        if (element.equals("addToBasketBtn")){
-            List<WebElement> addToBasketElements = driver.findElements(elementsMap.get(element));
-            for (int i=0; i<selectedProductIndex; i++){
-                getJsExecutor().executeScript("arguments[0].click();", addToBasketElements.get(i));
-                productsAddedToBasketCount++;
-                Thread.sleep(1000);
-            }
-        } else if (element.equals("showAllProductBtn")) {
+    public void userClicksButton(String element) {
+        if (element.equals("showAllProductBtn")) {
             try {
                 WebElement showMoreProducts = driver.findElement(elementsMap.get(element));
                 while (showMoreProducts.isDisplayed()) {
                     getJsExecutor().executeScript("arguments[0].click();", showMoreProducts);
                     Thread.sleep(1000);
                 }
-            }catch (NoSuchElementException ignored){
+            }catch (NoSuchElementException | InterruptedException ignored){
                 System.out.println("Products count less or equals 20");
             }
-        } else clickAction(driver.findElement(elementsMap.get(element)));
+        }
+        else clickAction(driver.findElement(elementsMap.get(element)));
 
     }
 
@@ -215,5 +224,13 @@ public class BaseSteps extends BaseMethods {
     @Then("Product {string} name should be displayed in new page")
     public void productSubcategoryPageCheck(String text) {
         Assert.assertEquals(driver.findElement(elementsMap.get("productSubCategoryName")).getText(), text);
+    }
+
+    @Then("Each {string} should be {int}")
+    public void eachProductCountShouldBe(String elements, int num) {
+        List<WebElement> productsCount = driver.findElements(elementsMap.get(elements));
+        for (WebElement element : productsCount) {
+            Assert.assertEquals(element.getAttribute("value"), "2");
+        }
     }
 }

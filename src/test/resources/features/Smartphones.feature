@@ -173,7 +173,7 @@ Feature: SmartPhonesAccessories
     When User selects "<productCategory>" from "productCategoryList"
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User hovers to a product
-    And User clicks "addToBasketBtn" button
+    And User clicks "addToBasketBtn" buttons
     Then Selected products count should be displayed on "basketBtn"
     And User clicks "basketBtn" button
     Then Product should be displayed in "basketProducts"
@@ -190,7 +190,7 @@ Feature: SmartPhonesAccessories
     When User selects "<productCategory>" from "productCategoryList"
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User hovers to a product
-    And User clicks "addToBasketBtn" button
+    And User clicks "addToBasketBtn" buttons
     And User clicks "basketBtn" button
     And User clicks "removeSelectedProductsBtn" button
     Then "Səbətinizdə məhsul yoxdur" message should be displayed in "emptyBasketSection"
@@ -217,3 +217,18 @@ Feature: SmartPhonesAccessories
       | Smartfonlar və aksessuarlar | Smartfonlar          |
       | Smartfonlar və aksessuarlar | Düyməli telefonlar   |
       | Smartfonlar və aksessuarlar | Stasionar telefonlar |
+
+  @ProductCountIncrease
+  Scenario Outline: Increase count of products in basket ("<productSubCategory>")
+    Given User is in Home Page
+    When User selects "<productCategory>" from "productCategoryList"
+    And User selects "<productSubCategory>" from "productSubCategoryList"
+    And User hovers to a product
+    And User clicks "addToBasketBtn" buttons
+    And User clicks "basketBtn" button
+    And User clicks "productIncreaseBtn" buttons
+    Then Each "productCount" should be 2
+
+    Examples:
+      | productCategory             | productSubCategory |
+      | Smartfonlar və aksessuarlar | Smartfonlar        |

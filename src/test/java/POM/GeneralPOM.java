@@ -32,5 +32,7 @@ public class GeneralPOM extends BaseMethods {
         elementsMap.put("productTypes", By.className("category-list"));
         elementsMap.put("filterCount", By.xpath("//label/span[@class='count']"));
         elementsMap.put("showAllProductBtn", By.className("contentosResult"));
+        elementsMap.put("productIncreaseBtn", By.xpath("//form/div/div/div/button[@value='+']"));
+        elementsMap.put("productCount", By.xpath("//*[@class='count']"));
     }
 }
