@@ -47,21 +47,22 @@ public class LoginStepDefinitions<JavaScriptexecutor> extends BaseMethods {
     private void explicitWait(By daxilOlBtn, AccessibleState visible, int i) {
     }
 
-    @And("Fill the username btn")
-    public void fillTheUsernameBtn() throws InterruptedException{
+    @And("Fill the username btn with dynamic string {}")
+    public void fillTheUsernameBtn(String username) throws InterruptedException{
      Thread.sleep(2000);
-     driver.findElement(loginPom.getEmailField()).sendKeys("wemaxek635@cubene.com");
+     explicitWait(loginPom.getEmailField(), ExpectedConditionType.PRESENCE, 40);
+     driver.findElement(loginPom.getEmailField()).sendKeys(username);
      driver.findElement(loginPom.getEmailField()).click();
     }
 
-    @And("Fill the password btn")
-    public void fillThePasswordBtn(){
+    @And("Fill the password btn with dynamic string {}")
+    public void fillThePasswordBtn(String password){
         explicitWait(loginPom.getPasswordField(), ExpectedConditionType.PRESENCE, 10);
 //        driver.switchTo();
 //        JavascriptExecutor js = (JavascriptExecutor) driver;
 //         js.executeScript("window.scrollBy(0,500)", "");
         //WebElement.sendKeys(Keys.DOWN);
-       driver.findElement(loginPom.getPasswordField()).sendKeys("12345Aa!");
+       driver.findElement(loginPom.getPasswordField()).sendKeys(password);
     }
 
     @And("Click submit btn")
@@ -180,6 +181,15 @@ public class LoginStepDefinitions<JavaScriptexecutor> extends BaseMethods {
     public void fillThePaswords(String password) {
         explicitWait((loginPom.getRegisterPassword()), ExpectedConditionType.PRESENCE, 40 );
         driver.findElement(loginPom.getRegisterPassword()).sendKeys(password);
+    }
+
+    @Then("User must not be login")
+    public void userMustNotBeLogin() throws InterruptedException{
+        explicitWait((loginPom.getLoginErrorText()), ExpectedConditionType.PRESENCE,  30) ;
+        Assert.assertTrue(driver.findElement(loginPom.getLoginErrorText()).isDisplayed());
+
+
+
     }
 }
 

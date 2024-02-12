@@ -35,4 +35,6 @@ public final class LoginPOM {
 
     private final By registerSubmit = By.xpath("//span[normalize-space()='Yeni hesab yaratmaq']");
 
+    private final By loginErrorText = By.xpath("(//div[@class='error-text mage-error'])[1]");
+
 }
