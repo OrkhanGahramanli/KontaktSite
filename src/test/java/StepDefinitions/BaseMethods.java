@@ -7,6 +7,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,9 +20,9 @@ public abstract class BaseMethods {
 
     static {
         try {
-          Class<?> clazz = Class.forName("POM." + pomName + "POM");
-          Object o = clazz.getDeclaredConstructor().newInstance();
-        }catch (Exception ignored){
+            Class<?> clazz = Class.forName("POM." + pomName + "POM");
+            Object o = clazz.getDeclaredConstructor().newInstance();
+        } catch (Exception ignored) {
 
         }
 
@@ -32,6 +33,16 @@ public abstract class BaseMethods {
 
         }
     }
+
+    protected WebElement getElement(By locator){
+        return driver.findElement(locator);
+    }
+    protected List<WebElement> getElements(By locator){
+        return driver.findElements(locator);
+    }
+
+
+
     public WebDriver driver = CucumberHook.driver.get();
     WebDriverWait wait;
 
@@ -121,6 +132,9 @@ public abstract class BaseMethods {
     protected void actionSendKeys(String value){
         Actions actions = new Actions(driver);
         actions.sendKeys(value).build().perform();
+    }
+
+
     }
 
 }

@@ -11,12 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CucumberOptions(
-        features = {"classpath:features/Computers.feature"},
+        features = {"classpath:features"},
         plugin = {"pretty", "json:target/cucumber.json"},
-        tags = "@RAMFilter"
+        tags = "@UnsuccesfulLogin"
 )
-
-
 public class TestRunner extends AbstractTestNGCucumberTests {
 
     @Override
