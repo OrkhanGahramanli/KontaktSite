@@ -1,4 +1,4 @@
-Feature: Login
+Feature: Register
 
 
   @SuccesfulRegistration
