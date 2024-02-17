@@ -20,8 +20,10 @@ public abstract class BaseMethods {
 
     static {
         try {
-            Class<?> clazz = Class.forName("POM." + pomName + "POM");
-            Object o = clazz.getDeclaredConstructor().newInstance();
+            for (String scenarioPOM : pomName){
+                Class<?> clazz = Class.forName("POM." + scenarioPOM + "POM");
+                Object o = clazz.getDeclaredConstructor().newInstance();
+            }
         } catch (Exception ignored) {
 
         }

@@ -1,4 +1,5 @@
-Feature: SmartPhonesAccessories
+Feature: Smartphones
+
   Scenario Outline: Verify right opening products page ("<productSubCategory>")
     Given User is in Home Page
     When User selects "<productCategory>" from "productCategoryList"
@@ -35,7 +36,6 @@ Feature: SmartPhonesAccessories
     When User selects "<productCategory>" from "productCategoryList"
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User inputs "<minPrice>" price in "minPriceInputField" and "<maxPrice>" price in "maxPriceInputField" from filter
-    And User clicks "showAllProductBtn" button
     Then Products between "<minPrice>" price and "<maxPrice>" price should be displayed
 
     Examples:
