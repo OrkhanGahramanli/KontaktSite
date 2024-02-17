@@ -24,7 +24,6 @@ Feature: Computers
     And User selects "<productSubCategory>" from "productSubCategoryList"
     And User selects "<productType>" from "productTypes"
     And User inputs "<minPrice>" price in "minPriceInputField" and "<maxPrice>" price in "maxPriceInputField" from filter
-    And User clicks "showAllProductBtn" button
     Then Products between "<minPrice>" price and "<maxPrice>" price should be displayed
 
     Examples:

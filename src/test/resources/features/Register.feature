@@ -9,7 +9,7 @@ Feature: Login
     And Click Register Btn
     And Fill the firstName Btn with dynamic string "My First Name"
     And Fill the secondName Btn with dynamic string "My Second Name"
-    And Fill the email with dynamic string "projectstaticemailautomation@gmail.com"
+    And Fill the email with dynamic string "amation347@gmail.com"
     And Fill the paswords with dynamic string "12345Aa!"
     Then Click the Registerr Btn
 

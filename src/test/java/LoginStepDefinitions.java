@@ -47,7 +47,7 @@ public class LoginStepDefinitions<JavaScriptexecutor> extends BaseMethods {
     private void explicitWait(By daxilOlBtn, AccessibleState visible, int i) {
     }
 
-    @And("Fill the username btn with dynamic string {}")
+    @And("Fills {string} in username input")
     public void fillTheUsernameBtn(String username) throws InterruptedException{
      Thread.sleep(2000);
      explicitWait(loginPom.getEmailField(), ExpectedConditionType.PRESENCE, 40);
@@ -55,7 +55,7 @@ public class LoginStepDefinitions<JavaScriptexecutor> extends BaseMethods {
      driver.findElement(loginPom.getEmailField()).click();
     }
 
-    @And("Fill the password btn with dynamic string {}")
+    @And("Fills {string} in password input")
     public void fillThePasswordBtn(String password){
         explicitWait(loginPom.getPasswordField(), ExpectedConditionType.PRESENCE, 10);
 //        driver.switchTo();

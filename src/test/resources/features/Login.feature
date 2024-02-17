@@ -5,8 +5,8 @@ Feature: Login
     Given User is in main page
     When Decline discount alert
     And Click Daxil Ol Btn
-    And Fill the username btn with dynamic string "wemaxek635@cubene.com"
-    And Fill the password btn with dynamic string "12345Aa!"
+    And Fills "wemaxek635@cubene.com" in username input
+    And Fills "12345Aa!" in password input
     And Click submit btn
     Then User must be login
 
@@ -15,8 +15,8 @@ Feature: Login
     Given User is in main page
     When Decline discount alert
     And Click Daxil Ol Btn
-    And Fill the username btn with dynamic string "username"
-    And Fill the password btn with dynamic string <password>
+    And Fills "<username>" in username input
+    And Fills "<password>" in password input
     And Click submit btn
     Then User must not be login
     Examples:

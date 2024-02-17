@@ -10,13 +10,16 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CucumberHook {
     public static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    public static String pomName;
+    public static List<String> pomName = new ArrayList<>();
 
     @Before
     public static void beforeScenario(Scenario scenario){
-        pomName = FilenameUtils.getBaseName(scenario.getUri().toString());
+        pomName.add(FilenameUtils.getBaseName(scenario.getUri().toString()));
         driver.set(new ChromeDriver());
         driver.get().get("https://kontakt.az/");
         driver.get().manage().window().maximize();
